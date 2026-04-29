@@ -9,7 +9,8 @@ exports.register = async (req, res) => {
 
     if (role === 'lender' || role === 'borrower') {
         const user = await User.create({ name, email, password: hashed, role });
-        res.status(201).json({ message: 'User registered successfully', user });
+        const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1d' });
+        res.status(201).json({ message: 'User registered successfully', token, role: user.role });
     } else {
         res.status(403).json({ message: 'Invalid role' });
     }

@@ -1,6 +1,12 @@
-module.exports = (roles) => (req, res, next) => {
+const authorize = (...roles) => {
+  return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
-        return res.status(403).json({ message: 'Access denied' });
+      return res.status(403).json({ 
+        message: `Access denied. ${req.user.role} cannot access this resource.`
+      });
     }
     next();
+  };
 };
+
+module.exports = { authorize };

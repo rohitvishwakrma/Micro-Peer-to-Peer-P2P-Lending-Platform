@@ -1,10 +1,5 @@
 import React from 'react';
-import TrendingUpLine from 'remixicon-react/TrendingUpLine';
-import CalendarLine from 'remixicon-react/CalendarLine';
-import MoneyCnyCircleLine from 'remixicon-react/MoneyCnyCircleLine';
-import TimeLine from 'remixicon-react/TimeLine';
-import UserStarLine from 'remixicon-react/UserStarLine';
-import ShieldLine from 'remixicon-react/ShieldLine';
+import { TrendingUp, Calendar, DollarSign, Clock, UserCheck, Shield } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 
 const purposeIcons = { education: '📚', medical: '🏥', business: '💼', debt: '💰', home: '🏠', other: '📝' };
@@ -56,19 +51,19 @@ const LoanCard = ({ loan, onFund }) => {
 
         <div className="grid grid-cols-2 gap-3 mb-4">
           <div className="flex items-center gap-2">
-            <div className="bg-green-100 p-1.5 rounded-lg"><TrendingUpLine className="h-3 w-3 text-green-600" /></div>
+            <div className="bg-green-100 p-1.5 rounded-lg"><TrendingUp className="h-3 w-3 text-green-600" /></div>
             <div><p className="text-xs text-gray-500">Interest Rate</p><p className="font-semibold text-sm">{loan.interestRate}% p.a.</p></div>
           </div>
           <div className="flex items-center gap-2">
-            <div className="bg-blue-100 p-1.5 rounded-lg"><CalendarLine className="h-3 w-3 text-blue-600" /></div>
+            <div className="bg-blue-100 p-1.5 rounded-lg"><Calendar className="h-3 w-3 text-blue-600" /></div>
             <div><p className="text-xs text-gray-500">Tenure</p><p className="font-semibold text-sm">{loan.tenure} months</p></div>
           </div>
           <div className="flex items-center gap-2">
-            <div className="bg-purple-100 p-1.5 rounded-lg"><MoneyCnyCircleLine className="h-3 w-3 text-purple-600" /></div>
+            <div className="bg-purple-100 p-1.5 rounded-lg"><DollarSign className="h-3 w-3 text-purple-600" /></div>
             <div><p className="text-xs text-gray-500">Monthly EMI</p><p className="font-semibold text-sm">₹{monthlyEMI.toLocaleString()}</p></div>
           </div>
           <div className="flex items-center gap-2">
-            <div className="bg-orange-100 p-1.5 rounded-lg"><TimeLine className="h-3 w-3 text-orange-600" /></div>
+            <div className="bg-orange-100 p-1.5 rounded-lg"><Clock className="h-3 w-3 text-orange-600" /></div>
             <div><p className="text-xs text-gray-500">Posted</p><p className="font-semibold text-xs">{formatDistanceToNow(new Date(loan.createdAt), { addSuffix: true })}</p></div>
           </div>
         </div>
@@ -88,12 +83,12 @@ const LoanCard = ({ loan, onFund }) => {
 
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-1">
-            <ShieldLine className="h-3 w-3 text-gray-400" />
+            <Shield className="h-3 w-3 text-gray-400" />
             <span className="text-xs text-gray-400">Risk: </span>
             {loan.interestRate < 15 ? <span className="text-xs text-green-600">Low</span> : loan.interestRate < 25 ? <span className="text-xs text-yellow-600">Medium</span> : <span className="text-xs text-red-600">High</span>}
           </div>
           <div className="flex items-center gap-1">
-            <UserStarLine className="h-3 w-3 text-gray-400" />
+            <UserCheck className="h-3 w-3 text-gray-400" />
             <span className="text-xs text-gray-400">Individual</span>
           </div>
         </div>

@@ -8,8 +8,3 @@ export const getStripe = () => {
   }
   return stripePromise;
 };
-
-export const createPaymentIntent = async (amount, currency = 'inr') => {
-  const response = await api.post('/payments/create-intent', { amount, currency });
-  return response.data;
-};

@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import CoinLine from 'remixicon-react/CoinLine';
-import MailLine from 'remixicon-react/MailLine';
-import LockLine from 'remixicon-react/LockLine';
-import LoginBoxLine from 'remixicon-react/LoginBoxLine';
+import { Coins, Mail, Lock, LogIn } from 'lucide-react';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -33,7 +30,7 @@ const Login = () => {
       <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
         <div className="text-center mb-8">
           <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-            <CoinLine className="h-8 w-8 text-blue-600" />
+            <Coins className="h-8 w-8 text-blue-600" />
           </div>
           <h1 className="text-2xl font-bold text-gray-800">Welcome Back</h1>
           <p className="text-gray-500">Login to your P2P Lending account</p>
@@ -45,7 +42,7 @@ const Login = () => {
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-medium mb-2">Email</label>
             <div className="relative">
-              <MailLine className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
               <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
                 placeholder="you@example.com" required />
@@ -55,7 +52,7 @@ const Login = () => {
           <div className="mb-6">
             <label className="block text-gray-700 text-sm font-medium mb-2">Password</label>
             <div className="relative">
-              <LockLine className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
               <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
                 placeholder="Enter password" required />
@@ -64,7 +61,7 @@ const Login = () => {
 
           <button type="submit" disabled={loading}
             className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 flex items-center justify-center gap-2">
-            <LoginBoxLine className="h-5 w-5" />
+            <LogIn className="h-5 w-5" />
             {loading ? 'Logging in...' : 'Login'}
           </button>
         </form>

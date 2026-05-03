@@ -1,12 +1,8 @@
 export const calculateEMI = (principal, interestRate, tenure) => {
-  const P = principal;
-  const r = interestRate / 100 / 12;
-  const n = tenure;
-  
-  if (P === 0) return 0;
-  if (r === 0) return P / n;
-  
-  const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+  const monthlyRate = interestRate / 100 / 12;
+  if (monthlyRate === 0) return Math.round(principal / tenure);
+  const emi = principal * monthlyRate * Math.pow(1 + monthlyRate, tenure) / 
+              (Math.pow(1 + monthlyRate, tenure) - 1);
   return Math.round(emi);
 };
 
@@ -20,11 +16,11 @@ export const formatCurrency = (amount) => {
 };
 
 export const formatDate = (date) => {
-  return new Date(date).toLocaleDateString('en-IN', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric'
-  });
+  const d = new Date(date);
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const year = d.getFullYear();
+  return `${day}/${month}/${year}`;
 };
 
 export const getStatusColor = (status) => {

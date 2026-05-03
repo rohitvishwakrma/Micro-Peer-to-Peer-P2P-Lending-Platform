@@ -168,6 +168,10 @@ exports.fundLoan = async (req, res) => {
 
 exports.getMyInvestments = async (req, res) => {
   try {
+    if (req.user.role !== 'lender') {
+      return res.json([]);
+    }
+    
     const investments = await FundedLoan.find({ lenderId: req.user._id })
       .populate('borrowerId', 'name')
       .sort({ createdAt: -1 });

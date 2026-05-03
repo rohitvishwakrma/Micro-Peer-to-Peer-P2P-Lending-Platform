@@ -19,27 +19,9 @@ exports.getNotifications = async (req, res) => {
     res.json({
       success: true,
       notifications,
-      pagination: {
-        page: parseInt(page),
-        limit: parseInt(limit),
-        total,
-        pages: Math.ceil(total / parseInt(limit))
-      },
+      pagination: { page: parseInt(page), limit: parseInt(limit), total, pages: Math.ceil(total / parseInt(limit)) },
       unreadCount
     });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-};
-
-exports.getUnreadCount = async (req, res) => {
-  try {
-    const count = await Notification.countDocuments({ 
-      userId: req.user._id, 
-      isRead: false 
-    });
-    
-    res.json({ success: true, count });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
@@ -74,23 +56,6 @@ exports.markAllAsRead = async (req, res) => {
     );
     
     res.json({ success: true, message: 'All notifications marked as read' });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-};
-
-exports.deleteNotification = async (req, res) => {
-  try {
-    const result = await Notification.findOneAndDelete({
-      _id: req.params.id,
-      userId: req.user._id
-    });
-    
-    if (!result) {
-      return res.status(404).json({ success: false, message: 'Notification not found' });
-    }
-    
-    res.json({ success: true, message: 'Notification deleted' });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

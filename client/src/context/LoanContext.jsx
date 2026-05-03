@@ -91,7 +91,10 @@ export const LoanProvider = ({ children }) => {
       setInvestments(data);
       return data;
     } catch (error) {
-      toast.error('Failed to fetch investments');
+      if (error.response?.status !== 403) {
+        toast.error('Failed to fetch investments');
+      }
+      setInvestments([]);
       throw error;
     } finally {
       setLoading(false);

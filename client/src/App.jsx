@@ -41,25 +41,21 @@ function AppRoutes() {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      
       <Route path="/dashboard" element={
         <ProtectedRoute>
           {user?.role === 'borrower' ? <BorrowerDashboard /> : <LenderDashboard />}
         </ProtectedRoute>
       } />
-      
       <Route path="/marketplace" element={
         <ProtectedRoute allowedRoles={['lender']}>
           <Marketplace />
         </ProtectedRoute>
       } />
-      
       <Route path="/create-loan" element={
         <ProtectedRoute allowedRoles={['borrower']}>
           <CreateLoan />
         </ProtectedRoute>
       } />
-      
       <Route path="/" element={<Navigate to="/dashboard" />} />
     </Routes>
   );

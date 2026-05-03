@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLoans } from '../context/LoanContext';
 import LoanMarketplace from '../components/lender/LoanMarketplace';
-import LoaderLine from 'remixicon-react/LoaderLine';
+import { Loader } from 'lucide-react';
 
 const Marketplace = () => {
   const { fetchLoanRequests, loading } = useLoans();
@@ -13,7 +13,7 @@ const Marketplace = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <LoaderLine className="h-12 w-12 text-blue-600 animate-spin" />
+        <Loader className="h-12 w-12 text-blue-600 animate-spin" />
       </div>
     );
   }

@@ -1,6 +1,5 @@
 import React from 'react';
-import CloseLine from 'remixicon-react/CloseLine';
-import SlidersHLine from 'remixicon-react/SlidersHLine';
+import { X, Sliders } from 'lucide-react';
 
 const MarketplaceFilters = ({ filters, setFilters }) => {
   const handleChange = (key, value) => setFilters(prev => ({ ...prev, [key]: value }));
@@ -11,12 +10,12 @@ const MarketplaceFilters = ({ filters, setFilters }) => {
     <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-5">
       <div className="flex justify-between items-center mb-5">
         <div className="flex items-center gap-2">
-          <SlidersHLine className="h-5 w-5 text-blue-600" />
+          <Sliders className="h-5 w-5 text-blue-600" />
           <h3 className="font-semibold text-gray-800">Filter Loans</h3>
         </div>
         {hasActiveFilters && (
           <button onClick={clearFilters} className="text-sm text-red-500 hover:text-red-600 flex items-center gap-1">
-            <CloseLine className="h-3 w-3" /> Clear all
+            <X className="h-3 w-3" /> Clear all
           </button>
         )}
       </div>
@@ -60,8 +59,7 @@ const MarketplaceFilters = ({ filters, setFilters }) => {
           <select value={filters.purpose} onChange={(e) => handleChange('purpose', e.target.value)}
             className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
             <option value="">All Purposes</option><option value="education">Education</option><option value="medical">Medical</option>
-            <option value="business">Business</option><option value="debt">Debt Consolidation</option>
-            <option value="home">Home Improvement</option><option value="other">Other</option>
+            <option value="business">Business</option><option value="debt">Debt Consolidation</option><option value="home">Home Improvement</option><option value="other">Other</option>
           </select>
         </div>
       </div>

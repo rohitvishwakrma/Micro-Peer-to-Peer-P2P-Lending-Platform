@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import RepaymentModal from './RepaymentModal';
 import { format } from 'date-fns';
-import LoaderLine from 'remixicon-react/LoaderLine';
+import { Loader } from 'lucide-react';
 
 const MyLoans = ({ loans, loading }) => {
   const [selectedLoan, setSelectedLoan] = useState(null);
@@ -19,7 +19,7 @@ const MyLoans = ({ loans, loading }) => {
   if (loading) {
     return (
       <div className="flex justify-center items-center py-12">
-        <LoaderLine className="h-8 w-8 text-blue-600 animate-spin" />
+        <Loader className="h-8 w-8 text-blue-600 animate-spin" />
       </div>
     );
   }
@@ -39,7 +39,15 @@ const MyLoans = ({ loans, loading }) => {
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead className="bg-gray-50">
-            <tr><th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Loan ID</th><th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Amount</th><th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Outstanding</th><th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Interest</th><th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Status</th><th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Next Payment</th><th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Action</th></tr>
+            <tr>
+              <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Loan ID</th>
+              <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Amount</th>
+              <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Outstanding</th>
+              <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Interest</th>
+              <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Status</th>
+              <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Next Payment</th>
+              <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Action</th>
+            </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
             {loans.map(loan => (
